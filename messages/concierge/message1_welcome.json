@@ -1,0 +1,30 @@
+{
+    "text": ":wave: Welcome.  I am so glad you will be playing cut-the-current. ",
+    "attachments": [
+        {
+            "title": "Benefits",
+            "image_url": "https://i.imgur.com/zZFb7i4.png"
+        },
+        {
+            "fallback": "Would you like to know more about the game?",
+            "title": "Would you like to know more about the game?",
+            "callback_id": "benefits_callback",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+              {
+                "name": "impact",
+                "text": "Yes",
+                "type": "button",
+                "value": "Yes"
+              },
+              {
+                "name": "impact",
+                "text": "No, Sign me up!",
+                "type": "button",
+                "value": "No, Sign me up!"
+              }
+            ]
+        }
+    ]
+}

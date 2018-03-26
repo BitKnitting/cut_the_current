@@ -1,0 +1,57 @@
+{
+  "text": "Ten homes participate for one month saving electricity.  The winner gets a prize as well as the coveted \"BIGGEST GREENIE\" title.",
+  "attachments": [
+    {
+      "color": "#3AA3E3",
+      "image_url": "https://i.imgur.com/aPNSn1Y.png",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "attachment_type": "default",
+      "title": "% Change in Energy Use"
+    },
+    {
+      "fallback": "Before the game starts",
+      "color": "#3AA3E3",
+      "thumb_url": "https://i.imgur.com/vFf7ehD.png",
+      "text": "Coach is always around giving you hints and tricks to help you win. ",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "callback_id": "em_callback",
+      "attachment_type": "default"
+    },
+    {
+      "text":"We install an Energy Monitor in your home before the game begins.  Do you want us to install an Energy Monitor?",
+      "fallback": "Pre-filled because you have actions in your attachment.",
+      "color": "#3AA3E3",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "callback_id": "Pre-filled because you have actions in your attachment.",
+      "attachment_type": "default",
+      "actions": [
+        {
+          "name": "Yes",
+          "text": "Yes",
+          "type": "button",
+          "style": "default",
+          "value": "Yes"
+        },
+        {
+          "name": "No",
+          "text": "No",
+          "type": "button",
+          "style": "default",
+          "value": "No"
+        }
+      ]
+    }
+  ]
+}
