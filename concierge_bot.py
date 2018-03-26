@@ -4,7 +4,7 @@ import json
 
 from slackclient import SlackClient
 
-BOT_AUTH='xoxb-336573790342-HdTuxLuE012aXDsPxpsKexzB'
+# The Concierge channel ID
 CHANNEL_ID = "C9VCRKADR"
 class Bot(object):
     """ Instanciates a Bot object to handle concierge interactions."""
