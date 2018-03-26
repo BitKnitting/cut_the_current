@@ -49,6 +49,8 @@ def send_welcome():
 
 @app.route("/button_pressed", methods=["GET", "POST"])
 def button_pressed():
+    r = request.database
+    print(r)
     import pdb;pdb.set_trace()
 
 @app.route("/listening", methods=["GET", "POST"])
