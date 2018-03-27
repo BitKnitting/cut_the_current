@@ -67,17 +67,18 @@ class Bot(object):
         with open("messages/concierge/message1_welcome.json") as json_file:
             return json.load(json_file)
 
+    def get_message(self,which_button):
+        if which_button == 'benefits_dialog_YES'
 
-
-    def getting_started_message(self):
-        """
-
-        """
-        with open("messages/concierge/message1_welcome.json") as json_file:
-            message_content = json.load(json_file)
-            post_message = self.client.api_call("chat.postMessage",
-                    channel=CHANNEL_ID,
-                    token=BOT_AUTH,
-                    text=message_content['text'],
-                    attachments=message_content['attachments']
-                    )
+    # def getting_started_message(self):
+    #     """
+    #
+    #     """
+    #     with open("messages/concierge/message1_welcome.json") as json_file:
+    #         message_content = json.load(json_file)
+    #         post_message = self.client.api_call("chat.postMessage",
+    #                 channel=CHANNEL_ID,
+    #                 token=BOT_AUTH,
+    #                 text=message_content['text'],
+    #                 attachments=message_content['attachments']
+    #                 )

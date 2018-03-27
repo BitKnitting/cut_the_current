@@ -31,10 +31,10 @@ def _event_handler(event_type, slack_event):
     """
     # ============== Message Events ============= #
 
-    if event_type == "message":
-        concierge_bot.user_id = slack_event["event"].get("user")
-        concierge_bot.getting_started_message()
-        return make_response("Getting Started Message Sent", 200,)
+    # if event_type == "message":
+    #     concierge_bot.user_id = slack_event["event"].get("user")
+    #     concierge_bot.getting_started_message()
+    #     return make_response("Getting Started Message Sent", 200,)
 
 ########################################################################
 @app.route("/welcome", methods=["GET", "POST"])
@@ -47,11 +47,14 @@ def send_welcome():
     return welcome_msg
 
 
-@app.route("/button_pressed", methods=["GET", "POST"])
+@app.route("/button_pressed", methods=["POST"])
 def button_pressed():
-    r = request.database
-    print(r)
-    import pdb;pdb.set_trace()
+    message_action = json.loads(request.form["payload"])
+    which_button = message_action['actions'][0]['name']
+    message = concierge_bot.get_message(which_button)
+    return make_response("button pressed.", 200, {"X-Slack-No-Retry": 1})
+    # return make_response("button pressed", 200, {"X-Slack-No-Retry": 1})
+
 
 @app.route("/listening", methods=["GET", "POST"])
 def hears():

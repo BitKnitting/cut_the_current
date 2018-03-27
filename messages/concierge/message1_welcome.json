@@ -13,13 +13,13 @@
             "attachment_type": "default",
             "actions": [
               {
-                "name": "impact",
+                "name": "benefits_dialog_YES",
                 "text": "Yes",
                 "type": "button",
                 "value": "Yes"
               },
               {
-                "name": "impact",
+                "name": "benefits_dialog_NO",
                 "text": "No, Sign me up!",
                 "type": "button",
                 "value": "No, Sign me up!"
