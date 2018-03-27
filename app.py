@@ -51,8 +51,8 @@ def send_welcome():
 def button_pressed():
     message_action = json.loads(request.form["payload"])
     which_button = message_action['actions'][0]['name']
-    message = concierge_bot.get_message(which_button)
-    return make_response("button pressed.", 200, {"X-Slack-No-Retry": 1})
+    message = jsonify(concierge_bot.get_message(which_button))
+    return message
     # return make_response("button pressed", 200, {"X-Slack-No-Retry": 1})
 
 

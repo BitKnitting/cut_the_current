@@ -68,7 +68,9 @@ class Bot(object):
             return json.load(json_file)
 
     def get_message(self,which_button):
-        if which_button == 'benefits_dialog_YES'
+        if which_button == 'benefits_dialog_YES':
+            with open("messages/concierge/message2_welcome.json") as json_file:
+                return json.load(json_file)
 
     # def getting_started_message(self):
     #     """
