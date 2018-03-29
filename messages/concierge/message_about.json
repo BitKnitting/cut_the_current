@@ -1,0 +1,65 @@
+{
+  "text": "Ten homes participate for one month saving electricity.  The winner gets a prize as well as the coveted \"BIGGEST GREENIE\" title.",
+  "attachments": [
+    {
+      "color": "#3AA3E3",
+      "image_url": "https://i.imgur.com/BBW6JqD.png",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "attachment_type": "default",
+      "title": "The Biggest Greenie Saved The Most Electricity"
+    },
+    {
+      "fallback": "Before the game starts",
+      "color": "#3AA3E3",
+      "thumb_url": "https://i.imgur.com/vFf7ehD.png",
+      "text": "Coach is always around to give you hints and tricks.  Just type `/coach`",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "callback_id": "N/A",
+      "attachment_type": "default",
+      "title": "Meet Your Coach"
+    },
+    {
+      "color": "#3AA3E3",
+      "thumb_url": "https://i.imgur.com/N1aG4rmt.jpg",
+      "text": "A new game starts the first Monday of the Month.",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "attachment_type": "default",
+      "title": "New Game Starts"
+    },
+    {
+      "fallback": "N/A",
+      "color": "#3AA3E3",
+      "thumb_url": "https://i.imgur.com/6U8k3Sxm.png",
+      "text": "We install an energy monitor the week before the game begins.  This way you can track your energy use.  It takes less than 15 minutes to install.",
+      "mrkdwn_in": [
+        "text",
+        "pretext",
+        "fields"
+      ],
+      "callback_id": "N/A",
+      "attachment_type": "default",
+      "title": "Install",
+      "actions": [
+        {
+          "name": "install_dialog_YES",
+          "text": "Set Install Appointment",
+          "type": "button",
+          "style": "primary",
+          "value": "Set Install Appointment"
+        }
+      ]
+    }
+  ]
+}

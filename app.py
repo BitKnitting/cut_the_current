@@ -39,21 +39,19 @@ def _event_handler(event_type, slack_event):
 ########################################################################
 @app.route("/welcome", methods=["GET", "POST"])
 def send_welcome():
-    # token = request.form.get('token',None)
-    # if NOT token:
-    #     message = "no token for the /welcome command"
-    #    return make_response(message, 403, {"X-Slack-No-Retry": 1})
-    welcome_msg = jsonify(concierge_bot.welcome_message)
+    welcome_msg = jsonify(concierge_bot.get_message('welcome_message'))
     return welcome_msg
+
+@app.route("/coach", methods=["GET", "POST"])
+def questions_to_coach():
+    with open('messages/coach/message_hello.json') as json_file:
+        return jsonify(json.load(json_file))
 
 
 @app.route("/button_pressed", methods=["POST"])
 def button_pressed():
-    message_action = json.loads(request.form["payload"])
-    which_button = message_action['actions'][0]['name']
-    message = jsonify(concierge_bot.get_message(which_button))
-    return message
-    # return make_response("button pressed", 200, {"X-Slack-No-Retry": 1})
+    action = json.loads(request.form["payload"])
+    return concierge_bot.button_handler(action)
 
 
 @app.route("/listening", methods=["GET", "POST"])

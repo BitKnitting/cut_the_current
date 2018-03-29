@@ -1,0 +1,63 @@
+{
+  "title": "Game Starts on Feb 4th!",
+  "submit_label": "Submit",
+  "callback_id": "install_form",
+  "elements": [{
+      "type": "select",
+      "label": "Date/Times",
+      "name": "Date/Times",
+      "placeholder": "Select install date/time",
+      "options": [{
+          "value": "Jan. 28th, 9AM",
+          "label": "Jan. 28th, 9AM"
+        },
+        {
+          "value": "Jan 28th,  10AM",
+          "label": "Jan 28th,  10AM"
+        },
+        {
+          "value": "Jan 28th, 1PM",
+          "label": "Jan 28th, 1PM"
+        },
+        {
+          "value": "Jan 29th, 9AM",
+          "label": "Jan 29th, 9AM"
+        },
+        {
+          "value": "Jan 30th, 1PM",
+          "label": "Jan 30th, 1PM"
+        }
+      ]
+    },
+    {
+      "name": "email",
+      "value": "",
+      "placeholder": "e.g.: concierge@gmail.com",
+      "label": "email",
+      "type": "text",
+      "subtype":"email"
+    },
+    {
+      "name": "Street",
+      "value": "",
+      "placeholder": "So we know where to install the energy monitor",
+      "label": "Street",
+      "type": "text"
+    },
+    {
+      "name": "City",
+      "value": "",
+      "placeholder": "City",
+      "label": "City",
+      "type": "text"
+    },
+    {
+      "name": "Phone",
+      "value": "",
+      "placeholder": "Phone number to use regarding this appointment",
+      "label": "Phone",
+      "type": "text",
+      "subtype": "number"
+    }
+  ]
+}

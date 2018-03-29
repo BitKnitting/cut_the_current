@@ -1,11 +1,17 @@
 import os
 import json
+from time import sleep
+import threading
+
 
 
 from slackclient import SlackClient
+from flask import jsonify, make_response
 
 # The Concierge channel ID
 CHANNEL_ID = "C9VCRKADR"
+
+
 class Bot(object):
     """ Instanciates a Bot object to handle concierge interactions."""
 
@@ -62,25 +68,69 @@ class Bot(object):
         # Then we'll reconnect to the Slack Client with the correct team's
         # bot token
         self.client = SlackClient(authed_teams[team_id]["bot_token"])
-    @property
-    def welcome_message(self):
-        with open("messages/concierge/message1_welcome.json") as json_file:
-            return json.load(json_file)
 
-    def get_message(self,which_button):
-        if which_button == 'benefits_dialog_YES':
-            with open("messages/concierge/message2_welcome.json") as json_file:
+    def get_message(self, which_message):
+        file = None
+        # import pdb;pdb.set_trace()
+        if which_message == 'benefits_message_YES':
+            file = "messages/concierge/message_about.json"
+        elif which_message == 'welcome_message':
+            file = "messages/concierge/message_welcome.json"
+        elif which_message == 'install_form_success':
+            file = "messages/concierge/message_install_form_success.json"
+        if file:
+            with open(file) as json_file:
                 return json.load(json_file)
 
-    # def getting_started_message(self):
-    #     """
-    #
-    #     """
-    #     with open("messages/concierge/message1_welcome.json") as json_file:
-    #         message_content = json.load(json_file)
-    #         post_message = self.client.api_call("chat.postMessage",
-    #                 channel=CHANNEL_ID,
-    #                 token=BOT_AUTH,
-    #                 text=message_content['text'],
-    #                 attachments=message_content['attachments']
-    #                 )
+    def show_dialog(self, which_button, trigger_id):
+        if which_button == 'install_dialog_YES':
+            with open("messages/concierge/dialog_install.json") as json_file:
+                json_loaded = json.load(json_file)
+                open_dialog = self.client.api_call(
+                    "dialog.open",
+                    trigger_id=trigger_id,
+                    token=os.environ.get("BOT_AUTH"),
+                    dialog=json_loaded
+                )
+
+    def button_handler(self, action):
+        # Check if incoming was the result of a form Submit.
+        callback_id = action['callback_id']
+        if callback_id == 'install_form':
+            # import pdb;pdb.set_trace()
+            # return make_response("",200)
+            channel = channel=action['channel']['id']
+            fname = 'list_of_messages_after_appt_setup'
+            # send messages after responding to the dialog submit button....
+            t = threading.Timer(1,self.send_messages,kwargs={'filename':fname,'channel':channel})
+            t.start()
+            return make_response("",200)
+        which_message = action['actions'][0]['name']
+        print(which_message)
+        if 'dialog' in which_message:
+            trigger_id = action["trigger_id"]
+            self.show_dialog(which_message,trigger_id)
+            return make_response("",200)
+        else:
+            message = jsonify(self.get_message(which_message))
+            return message
+            # return make_response("button pressed", 200, {"X-Slack-No-Retry": 1})
+
+    # A little conversationsal chatter....
+    def send_messages(self,**kwargs):
+        fname = kwargs['filename']
+        channel = kwargs['channel']
+        filename = 'messages/concierge/'+fname+'.list'
+        print(filename)
+        with open(filename) as f:
+            messages = f.read().splitlines()
+            for message in messages:
+                sleep(5.0)
+                self.client.api_call(
+                    "chat.postMessage",
+                    token=os.environ.get("BOT_AUTH"),
+                    channel=channel,
+                    text=message,
+                    as_user=False,
+                    icon_url="https://i.imgur.com/quvFoGF.png"
+                )

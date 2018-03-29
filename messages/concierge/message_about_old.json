@@ -1,5 +1,5 @@
 {
-  "text": "Ten homes participate for one month saving electricity.  The winner gets a prize as well as the coveted \"BIGGEST GREENIE\" title.",
+  "text": "Ten homes participate for one month saving electricity.  The home that saves the most gets a prize as well as the coveted \"BIGGEST GREENIE\" title.",
   "attachments": [
     {
       "color": "#3AA3E3",
@@ -26,7 +26,7 @@
       "attachment_type": "default"
     },
     {
-      "text":"We install an Energy Monitor in your home before the game begins.  Do you want us to install an Energy Monitor?",
+      "text":"A new game begins the first Monday of the month.  We install an Energy Monitor in your home before the game begins.",
       "fallback": "Pre-filled because you have actions in your attachment.",
       "color": "#3AA3E3",
       "mrkdwn_in": [
@@ -34,6 +34,15 @@
         "pretext",
         "fields"
       ],
+      {
+        "text":"Do you want us to install an Energy Monitor?",
+        "fallback": "Pre-filled because you have actions in your attachment.",
+        "color": "#3AA3E3",
+        "mrkdwn_in": [
+          "text",
+          "pretext",
+          "fields"
+        ],
       "callback_id": "Pre-filled because you have actions in your attachment.",
       "attachment_type": "default",
       "actions": [

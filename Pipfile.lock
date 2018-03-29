@@ -95,10 +95,10 @@
         },
         "slackclient": {
             "hashes": [
-                "sha256:557dbf7715fc8db0937813367ec3cc72cd14caf70bbdf12ff394ff3ae3ce8317"
+                "sha256:e9de0c893e8c5473107f5927ae1e543d35246f0c834f5e86470b22b762211577"
             ],
             "index": "pypi",
-            "version": "==1.2.0"
+            "version": "==1.2.1"
         },
         "urllib3": {
             "hashes": [

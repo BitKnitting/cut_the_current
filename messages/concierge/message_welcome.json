@@ -8,21 +8,16 @@
         {
             "fallback": "Would you like to know more about the game?",
             "title": "Would you like to know more about the game?",
-            "callback_id": "benefits_callback",
+            "callback_id": "N/A",
             "color": "#3AA3E3",
             "attachment_type": "default",
             "actions": [
               {
-                "name": "benefits_dialog_YES",
+                "name": "benefits_message_YES",
                 "text": "Yes",
+                "style": "primary",
                 "type": "button",
                 "value": "Yes"
-              },
-              {
-                "name": "benefits_dialog_NO",
-                "text": "No, Sign me up!",
-                "type": "button",
-                "value": "No, Sign me up!"
               }
             ]
         }
