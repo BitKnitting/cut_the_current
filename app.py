@@ -15,20 +15,10 @@ app = Flask(__name__)
 
 
 def _event_handler(event_type, slack_event):
-    """
-    A helper function that routes events from Slack to our Bot
-    by event type and subtype.
-    Parameters
-    ----------
-    event_type : str
-        type of event recieved from Slack
-    slack_event : dict
-        JSON response from a Slack reaction event
-    Returns
-    ----------
-    obj
-        Response object with 200 - ok or 500 - No Event Handler error
-    """
+    print('event type: ',event_type)
+    print('slack event',slack_event)
+    welcome_msg = jsonify(concierge_bot.get_message('welcome_message'))
+    return welcome_msg
     # ============== Message Events ============= #
 
     # if event_type == "message":
@@ -60,6 +50,8 @@ def hears():
     This route listens for incoming events from Slack and uses the event
     handler helper function to route events to our Bot.
     """
+    if request.data == b'':
+        return make_response('Not a valid Slack message', 403, {"X-Slack-No-Retry": 1})
     slack_event = json.loads(request.data)
       # ============= Slack URL Verification ============ #
     # In order to verify the url of our endpoint, Slack will send a challenge
